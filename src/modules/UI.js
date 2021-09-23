@@ -13,7 +13,7 @@ class UI {
 		newWeather.classList.add('weather', 'centralized');
 		newWeather.append(currentTemp, city, description, img, minMaxTemp)
 		main.append(newWeather);
-		return obj.description
+		return obj.description.split(' ').join('-');
 
 	}
 
@@ -33,7 +33,7 @@ class UI {
 	static createCurrentTemp = (currentTemp) => {
 		const temp = document.createElement('div');
 		temp.textContent = `${currentTemp.toFixed(1)}º`;
-		temp.classList.add('current-temp');
+		temp.classList.add('text-top-weather');
 		return temp
 	}
 

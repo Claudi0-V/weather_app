@@ -2,12 +2,17 @@ import "regenerator-runtime/runtime";
 
 class Weather {
 	static getWeather = async (search) => {
-		const response = await fetch(
-			`https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=1b84323af01934237a6909b685066330`,
-			{ mode: "cors" }
-		);
-		const finalData = await response.json();
-		return finalData;
+		try {
+			const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=1b84323af01934237a6909b685066330`,{ mode: "cors" });
+			if (response.status === 404) {
+				  throw new Error()
+			} else {
+				const finalData = await response.json();
+				return finalData;
+			}
+		} catch(e) {
+			return false
+		}
 	};
 
 	static processData = async (data) => {
