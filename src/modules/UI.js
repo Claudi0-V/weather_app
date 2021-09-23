@@ -13,8 +13,7 @@ class UI {
 		newWeather.classList.add('weather', 'centralized');
 		newWeather.append(currentTemp, city, description, img, minMaxTemp)
 		main.append(newWeather);
-		return obj.description.split(' ').join('-');
-
+		
 	}
 
 	static createCity = (city) => {
@@ -32,14 +31,14 @@ class UI {
 
 	static createCurrentTemp = (currentTemp) => {
 		const temp = document.createElement('div');
-		temp.textContent = `${currentTemp.toFixed(1)}º`;
+		temp.textContent = `${currentTemp.toFixed(1)}ºc`;
 		temp.classList.add('text-top-weather');
 		return temp
 	}
 
 	static createMinMaxTemp = (minTemp, maxTemp) => {
 		const minMaxTemp = document.createElement('div');
-		minMaxTemp.textContent = `${minTemp.toFixed(1)}º / ${maxTemp.toFixed(1)}º`;
+		minMaxTemp.textContent = `${minTemp.toFixed(1)}ºc / ${maxTemp.toFixed(1)}ºc`;
 		minMaxTemp.classList.add('min-max-temp');
 		return minMaxTemp
 	}
@@ -51,7 +50,5 @@ class UI {
 		return descriptionDiv
 	}
 }
-
-
 
 export { UI }

@@ -19,7 +19,8 @@ class Weather {
 		const { name, weather, main } = data;
 		const { icon, description} = weather[0];
 		const { humidity, temp, temp_max, temp_min} = main;
-		return {name, icon, description, humidity, temp, temp_max, temp_min};
+		const mainWeather = weather[0].main;
+		return {name, icon, description, humidity, temp, temp_max, temp_min, mainWeather};
 	};
 }
 
