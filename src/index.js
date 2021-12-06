@@ -15,9 +15,12 @@ const asyncProcessing = async (city) => {
     ErrorUI.createErrorUI(city);
     Background.modifyBackground({ weather: 'Error' });
   } else {
-      const data = await Weather.processData(getWeather);
-      UI.createElements(data);
-      Background.modifyBackground({ weather: data.mainWeather, description: data.description });
+    const data = await Weather.processData(getWeather);
+    UI.createElements(data);
+    Background.modifyBackground({
+      weather: data.mainWeather,
+      description: data.description,
+    });
   }
 };
 

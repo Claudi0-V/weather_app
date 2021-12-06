@@ -39,7 +39,7 @@ let backgrounds = {
 };
 
 class Background {
-	static modifyBackground({weather, description}) {
+	static modifyBackground({weather, description}) {		
 		let setPropertyValue;
 		if (weather === 'Clouds' || weather === 'Rain') {
 			setPropertyValue = 'linear-gradient(' + backgrounds[weather][description] + ')';
