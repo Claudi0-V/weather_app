@@ -10,12 +10,13 @@ const button = document.querySelector('button');
 const asyncProcessing = async (city) => {
   document.querySelector('.background').classList.remove('foreground');
   document.documentElement.style.setProperty('--bg-opacity', '0');
-  const getWeather = await Weather.getWeather(city);
-  if (!getWeather) {
+  const { data } = await Weather.getWeather(city);
+
+  if (!data) {
     ErrorUI.createErrorUI(city);
     Background.modifyBackground({ weather: 'Error' });
   } else {
-    const data = await Weather.processData(getWeather);
+
     UI.createElements(data);
     Background.modifyBackground({
       weather: data.mainWeather,
