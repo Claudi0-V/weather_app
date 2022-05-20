@@ -1,27 +1,40 @@
 import './style.css';
-import { Weather } from './modules/api.js';
-import { UI } from './modules/UI.js';
-import { ErrorUI } from './modules/error.js';
-import { Background } from './modules/background.js';
+import getWeather from './modules/api.js';
 
 const input = document.querySelector('#search');
 const button = document.querySelector('button');
+const city = document.querySelector('#city');
+const description = document.querySelector('#description');
+const iconImg = document.querySelector('#icon');
+const temp = document.querySelector('#temp');
+const temp_max = document.querySelector('#temp_max');
+const temp_min = document.querySelector('#temp_min');
+const background = document.querySelector('.background');
+const errorModalWrapper = document.querySelector('.error-modal-wrapper');
+const errorSpan = document.querySelector('.error-span');
 
-const asyncProcessing = async (city) => {
-  document.querySelector('.background').classList.remove('foreground');
-  document.documentElement.style.setProperty('--bg-opacity', '0');
-  const { data } = await Weather.getWeather(city);
+
+document.querySelector('.close-modal').addEventListener('click', (e) => {
+  errorModalWrapper.style.display = 'none'
+})
+
+
+const asyncProcessing = async (searchTerm) => {
+  const { data } = await getWeather(searchTerm);
 
   if (!data) {
-    ErrorUI.createErrorUI(city);
-    Background.modifyBackground({ weather: 'Error' });
-  } else {
+    errorSpan.textContent = searchTerm;
+    errorModalWrapper.style.display = 'flex';
 
-    UI.createElements(data);
-    Background.modifyBackground({
-      weather: data.mainWeather,
-      description: data.description,
-    });
+  } else {
+    city.textContent = `${data.name}, ${data.country}.`;
+    description.textContent = data.description;
+    iconImg.src = `https://openweathermap.org/img/wn/${data.icon}@2x.png`;
+    temp.textContent = data.temp.toFixed(1);
+    temp_max.textContent = data.temp_max.toFixed(1);  
+    temp_min.textContent = data.temp_min.toFixed(1);
+    background.style.setProperty('--url', `url('${data.wallpaper}')`);
+    
   }
 };
 

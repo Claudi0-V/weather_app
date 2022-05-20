@@ -1,21 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Weather App</title>
-	<script src="https://kit.fontawesome.com/935da3679a.js" crossorigin="anonymous" defer></script>
+	<link
+		href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+		rel="stylesheet"
+	/>
 	<script type="module" src="/index.js"></script>
+	<link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="./favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="./favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="./favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="./favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="./favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="./favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="./favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+	<link rel="manifest" href="./favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 </head>
 <body>
 	<nav class="centralized">
-		<input type="search" placeholder="Search.." id="search" class="nav-items">
-		<button type="submit" class="nav-items"> <i class="fas fa-search"></i> </button>
+		<input
+			type="search"
+			placeholder="Search.."
+			id="search"
+			class="nav-items"
+		/>
+		<button type="submit" class="nav-items" id="search-button">
+			<i class="ri-search-2-line"></i>
+		</button>
 	</nav>
-	<div class="background"></div>
-	<main class="centralized">
-		<div class="weather centralized">
-			<img src="" alt="">
+	<main class="centralized background">
+		<div class="error-modal-wrapper centralized">
+			<div class="error-modal">
+				<i class="ri-close-line close-modal"></i>
+				<p>Sorry, but we can't find</p>
+				<span class="error-span"></span>
+				<p>try again</p>
+			</div>
+		</div>
+		<div class="weather-wrapper centralized">
+			<div class="city-name">
+				<i class="ri-map-pin-fill"></i>
+				<span id="city"></span>
+			</div>
+			<div class="description-container">
+				<h1 id="description"></h1>
+				<img id="icon" />
+			</div>
+			<ul class="temperature-list">
+				<li class="temperature">
+					<i class="ri-arrow-up-s-fill"></i>
+					<span id="temp_max"></span>
+					<i class="ri-celsius-line"></i>
+				</li>
+				<li class="temperature main-temperature">
+					<i class="ri-temp-cold-line"></i>
+					<span id="temp"></span>
+					<i class="ri-celsius-line main-celsius"></i>
+				</li>
+				<li class="temperature">
+					<i class="ri-arrow-down-s-fill"></i>
+					<span id="temp_min"></span>
+					<i class="ri-celsius-line"></i>
+				</li>
+			</ul>
 		</div>
 	</main>
 </body>

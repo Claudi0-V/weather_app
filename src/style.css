@@ -1,35 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 
 :root {
 	--nav-size: 40px;
-	--bg-gradient: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
-	--bg-opacity: 1;
+	--url:  url(https://images.pexels.com/photos/12109141/pexels-photo-12109141.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
 }
 
 body {
 	font-family: Verdana, sans-serif;
 	margin: 0;
 	height: 100vh;
-	background-color: #FAACA8;
-	background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
+	color:  white;
+	transition: all 1s linear;
+
 }
 
-nav {
-	width: 100%;
-	top: 0;
-	position: absolute;
-	height: var(--nav-size);
-	flex-direction: row !important;
-}
-
-main {
-	height: 100vh;
-	display: flex;
-}
+/* UTIL*/
 
 .centralized {
 	display: flex;
@@ -38,50 +23,155 @@ main {
 	flex-direction: column;
 }
 
-.nav-items {
-	margin-top: 8px;
-	margin-right: 3px;
-	padding: 8px;
-	border: 1px solid black;
-	border-radius: 4px;
-	outline: none;
-	background: rgba(255, 255, 255, 0.3);
-	font-size: 0.8rem;
-}
 
-.weather {
-	background-color: rgba(255,255,255,0.5);
-	border-radius: 4px;
-	padding: 30px 50px;
-
-}
-
-.text-top-weather {
-	font-family: 'Roboto', sans-serif;
-	font-size: 3rem;
-	margin-bottom: 5px;
-}
-
-.not-found {
-	max-width: 150px;
-}
-
-.error {
-	color: red;
-	font-weight: 400;
-}
-
-.background {
+/* NAV */
+nav {
+	width: 100%;
+	top: 0;
 	position: absolute;
+	flex-direction: row !important;
+}
+
+#search {
+	width: clamp(280px, 45%, 290px);
+	height: 40px;
+	margin-top: 10px;
+	border: none;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    border-radius: 3px;
+    outline: none;
+    position: relative;
+}
+
+
+#search-button {
+	border: none;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    width: 45px;
+    height: 40px;
+    padding: 0;
+    margin-top: 10px;
+    margin-left: 3px;
+    border-radius: 3px;
+}
+
+/* MAIN */
+main {	
+	height: 100vh; 
+	background: var(--url);
+	background-repeat: no-repeat; 
+    background-size: cover;
+	background-position: center;
+}
+
+.weather-wrapper {
+	max-width: 700px;
+	max-height: 700px;
+	padding: 15px;
+	background-color: rgba(0,0,0, 0.4);
+	border-radius: 7px;
+	box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+
+.description-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.description-container h1 {
+	font-size: 2.5rem;
+	margin-top: 4px;
+	margin-bottom: 0px;
+	text-transform: capitalize;
+}
+
+
+.temperature-list {
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	padding: 0px;
+}
+
+.temperature {
+	display: flex;
+    align-items: center;
+    width: 100px;
+}
+
+.main-temperature {
+	transform: translateY(-13px);
+}
+.ri-arrow-up-s-fill {
+  font-size: 2.5rem;
+  color: #2196F3;
+}
+
+.ri-arrow-down-s-fill {
+  font-size: 2.5rem;
+  color: #f4511e;
+}
+
+.ri-temp-cold-line {
+	font-size: 1.4rem;
+}
+
+#temp {
+	font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.main-celsius {
+	margin-left: 3px;
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+/* ERROR MODAL */
+.error-modal-wrapper {
+	
+	position:  absolute;
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
-	transition: all 1s linear;
-	opacity: 0;
-	z-index: -1;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0, 0.6);
+	z-index: 2;
+	display: none;
 }
 
-.foreground {
-	background-image: var(--bg-gradient);
-	opacity: var(--bg-opacity);
+.error-modal {
+	background-color: white;
+    color: black;
+    min-width: 240px;
+    min-height: 160px;
+    text-align: center;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.error-modal {
+	font-size: 1.3rem;
+}
+
+.error-span {
+	color: #f4511e;
+}
+
+.ri-close-line {
+	position:  absolute;
+	top:  5px;
+	right: 5px;
+	font-size: 20px;
+	border-radius: 50%;
+	padding: 2px;	
+}
+
+.ri-close-line:hover {
+	background-color: black;
+	color: white;
 }
