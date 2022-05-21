@@ -3,7 +3,7 @@ import path from "path";
 
 export default defineConfig({
   root: "src",
-  base: "/weather_app/",
+  base: "",
   build: {
     outDir: "../dist", 
     emptyOutDir: true,
