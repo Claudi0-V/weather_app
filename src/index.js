@@ -1,4 +1,3 @@
-import './style.css';
 import getWeather from './modules/api.js';
 
 const input = document.querySelector('#search');
